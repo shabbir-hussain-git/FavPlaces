@@ -1,11 +1,11 @@
 import { Text } from "react-native"
-
+import AddScreen from '../components/AddScreen'
 
 
 const AddFav = ()=>{
     return (
         <>
-            <Text>Add Fav Screen</Text>
+            <AddScreen></AddScreen>
         </>
     )
 }
