@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import COLORS from '../Util/Colors';
 import { getHeaderTitle } from '@react-navigation/elements';
 
-
+//
 const Header = ({ navigation, route, options, back }) => {
 
     const title = getHeaderTitle(options, route.name);
