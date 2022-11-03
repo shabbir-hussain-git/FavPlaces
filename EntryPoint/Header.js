@@ -18,7 +18,7 @@ const Header = ({ navigation, route, options, back }) => {
         </View>
         <View style={styles.iconStyle}>
           <Pressable onPress={openFav}>
-            <Icon name="plus-circle" size={20} color={COLORS.black} />
+            <Icon name="plus-circle" size={30} color={COLORS.black} />
           </Pressable>
         </View>
       </View>
@@ -36,7 +36,7 @@ const Header = ({ navigation, route, options, back }) => {
     iconCss: {
       flexDirection: 'row',
       backgroundColor:COLORS.primary_100,
-      height:40,
+      height:60,
       alignItems:'center',
       paddingHorizontal:10
     },
