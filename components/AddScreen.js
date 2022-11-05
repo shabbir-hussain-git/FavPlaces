@@ -1,11 +1,29 @@
 import COLORS from "../Util/Colors";
-import { Text,View,ScrollView,StyleSheet, TextInput, Pressable } from "react-native";
+import { Text,View,ScrollView,StyleSheet, TextInput, Pressable, Alert, Image } from "react-native";
 import DIMEN from "../Util/Dimen";
 import ImageBtn from './ImageBtn'
+import { useDispatch,useSelector } from "react-redux";
+import { addPlace } from "../store/FavPlaceSlice";
+import Place from '../model/place';
+import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 const AddScreen = ()=>{
+    const [title,onTitleChange] = useState('');
+    const navigation  = useNavigation();
+    const state = useSelector((state)=>state.fav);
+    const dispatch = useDispatch();
 
-    console.log(COLORS.primary_200)
-
+    const addPlaces = ()=>{
+      let place = new Place(title,state.imageUri,'','');
+      dispatch(addPlace(JSON.stringify(place)))
+      navigation.goBack()
+    }
+    const openCamera = ()=>{
+      navigation.navigate('TakePic')
+    }
+    const titleChange = (data)=>{
+      onTitleChange(data);
+    }
     return (
       <>
         <ScrollView style={styles.container}>
@@ -14,13 +32,29 @@ const AddScreen = ()=>{
               <Text style={[styles.textLook, styles.textSize]}>Title</Text>
             </View>
             <View style={[styles.inputTitle, styles.boxStyle]}>
-              <TextInput></TextInput>
+              <TextInput
+               onChangeText={titleChange}
+               value={title}></TextInput>
             </View>
-            <View style={[styles.imageView, styles.boxStyle]}></View>
-            <ImageBtn iconName="camera" text={'Take Image'}></ImageBtn>
+            <View style={[styles.imageView, styles.boxStyle]}>
+            {state.imageUri &&  <Image
+                style={styles.imageView}
+                source={{
+                  uri:state.imageUri
+                }}
+              
+              />
+            }
+            </View>
+            <ImageBtn 
+              onPress={openCamera}
+              iconName="camera" 
+              text={'Take Image'}
+            ></ImageBtn>
             <View style={[styles.imageView, styles.boxStyle]}></View>
             <View style={styles.btnGrp}>
               <ImageBtn
+                
                 style={[styles.flex1]}
                 iconName="location-arrow"
                 text={'Locate User'}></ImageBtn>
@@ -30,7 +64,7 @@ const AddScreen = ()=>{
                 text={`Pick on Map`}></ImageBtn>
             </View>
             <View>
-              <Pressable>
+              <Pressable onPress={addPlaces}>
                 <View style={styles.btn}>
                   <Text style={styles.btnText}>Add Place</Text>
                 </View>

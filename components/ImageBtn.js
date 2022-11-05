@@ -10,9 +10,12 @@ const ImageBtn = (props) => {
     if(props.style){
         stylesArr = props.style;
     }
+    const onViewPressed = ()=>{
+    }
+    let onPress = props.onPress ? props.onPress : onViewPressed;
     return (
       <View style={stylesArr}>
-        <Pressable>
+        <Pressable onPress={onPress}>
           <View style={styles.imageCapture}>
             <View style={styles.iconStye}>
               <ShIconFa

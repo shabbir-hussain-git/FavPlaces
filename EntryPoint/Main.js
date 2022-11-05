@@ -5,6 +5,7 @@ import AddFav from '../Screens/AddFav';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import COLORS from '../Util/Colors';
 import Header from './Header'
+import TakePic from '../components/TakePic';
 const Stack = createNativeStackNavigator();
 
 const Main = ()=> {
@@ -38,6 +39,9 @@ const Main = ()=> {
        <Stack.Screen options={{
         headerTitle:"Add Favorite Places",
       }} name="Fav" component={AddFav} />
+      <Stack.Screen options={{
+       headerShown:false
+      }} name="TakePic" component={TakePic} />
     </Stack.Navigator>
   );
 }
