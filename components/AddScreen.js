@@ -8,6 +8,7 @@ import Place from '../model/place';
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 const AddScreen = ()=>{
+  //
     const [title,onTitleChange] = useState('');
     const navigation  = useNavigation();
     const state = useSelector((state)=>state.fav);
