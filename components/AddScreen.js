@@ -15,7 +15,7 @@ const AddScreen = ()=>{
     const dispatch = useDispatch();
 
     const addPlaces = ()=>{
-      let place = new Place(title,state.imageUri,'','');
+      let place = new Place(title,state.imageUri,'',state.latLong);
       dispatch(addPlace(JSON.stringify(place)))
       navigation.goBack()
     }
@@ -24,6 +24,9 @@ const AddScreen = ()=>{
     }
     const titleChange = (data)=>{
       onTitleChange(data);
+    }
+    const takeLocation = ()=>{
+      navigation.navigate('TakeLoc')
     }
     return (
       <>
@@ -55,7 +58,7 @@ const AddScreen = ()=>{
             <View style={[styles.imageView, styles.boxStyle]}></View>
             <View style={styles.btnGrp}>
               <ImageBtn
-                
+                onPress={takeLocation}
                 style={[styles.flex1]}
                 iconName="location-arrow"
                 text={'Locate User'}></ImageBtn>

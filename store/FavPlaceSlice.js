@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     favPlaces:[],
-    imageUri:''
+    imageUri:'',
+    latLong:{
+        latitude:0,
+        longitude:0
+    }
 }
 
 const favPlaceSlice = createSlice({
@@ -15,9 +19,12 @@ const favPlaceSlice = createSlice({
         },
         setCurrentImage:(state,action)=>{
             state.imageUri = action.payload;
+        },
+        setCurrentLocation:(state,action)=>{
+            state.latLong = JSON.parse(action.payload)
         }
     }
 })
 
 export default favPlaceSlice.reducer;
-export const { addPlace,setCurrentImage } = favPlaceSlice.actions;
+export const { addPlace,setCurrentImage,setCurrentLocation } = favPlaceSlice.actions;

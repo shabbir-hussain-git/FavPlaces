@@ -18,7 +18,8 @@ const FavItem = ({item})=>{
                 <Text style={styles.title}>{item.title}</Text>
             </View>
             <View>
-                <Text>{item.location}</Text>
+                <Text>{item.location.latitude}</Text>
+                <Text>{item.location.longitude}</Text>
             </View>
             <View>
                 <Text>{item.address}</Text>

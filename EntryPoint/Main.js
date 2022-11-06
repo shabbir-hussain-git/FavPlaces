@@ -6,6 +6,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import COLORS from '../Util/Colors';
 import Header from './Header'
 import TakePic from '../components/TakePic';
+import ShIconFa from '../components/Icon/ShIconFa';
+import PicCapture from '../components/PicCapture'
+import TakeLocation from '../components/TakeLocation'
 const Stack = createNativeStackNavigator();
 
 const Main = ()=> {
@@ -14,12 +17,13 @@ const Main = ()=> {
   const getHeaderBtn = (navigation)=>{
 
     const openFav = ()=>{
+      // Alert.alert('hi')
         navigation.navigate('Fav')
     }
     return (
         <View style={styles.iconCss}>
                 <Pressable onPress={openFav}>
-                    <Icon name="plus-circle" size={25} color={COLORS.black} />
+                    <ShIconFa name="pencil-square-o" size={25} color={COLORS.black} />
                 </Pressable>
          </View>
     )
@@ -43,7 +47,11 @@ const Main = ()=> {
       }} name="Fav" component={AddFav} />
       <Stack.Screen options={{
        headerShown:false
-      }} name="TakePic" component={TakePic} />
+      }} name="TakePic" component={PicCapture} />
+       <Stack.Screen options={{
+       headerShown:false
+      }} name="TakeLoc" component={TakeLocation} />
+      
     </Stack.Navigator>
   );
 }
