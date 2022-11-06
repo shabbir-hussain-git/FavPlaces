@@ -21,9 +21,14 @@ const TakeLocation = ({navigation})=>{
         navigation.goBack();
     }
 
+    const openMapView = ()=>{
+        navigation.navigate('MapScreen')
+    }
+
     return (
         <>
             <Button title="Take Location" onPress={takeLocation}/>
+            <Button title="Take me to Map" onPress={openMapView}/>
         </>
     )
 }

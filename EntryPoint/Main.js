@@ -9,6 +9,9 @@ import TakePic from '../components/TakePic';
 import ShIconFa from '../components/Icon/ShIconFa';
 import PicCapture from '../components/PicCapture'
 import TakeLocation from '../components/TakeLocation'
+import MapViewScreen from '../components/MapViewScreen'
+
+
 const Stack = createNativeStackNavigator();
 
 const Main = ()=> {
@@ -51,7 +54,9 @@ const Main = ()=> {
        <Stack.Screen options={{
        headerShown:false
       }} name="TakeLoc" component={TakeLocation} />
-      
+      <Stack.Screen options={{
+       headerShown:false
+      }} name="MapScreen" component={MapViewScreen} />
     </Stack.Navigator>
   );
 }
