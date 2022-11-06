@@ -25,7 +25,8 @@ const Home = ()=>{
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:COLORS.primary_300
+        // backgroundColor:COLORS.primary_300,
+       
     }
 })
 export default Home;

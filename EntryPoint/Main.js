@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 const Main = ()=> {
 
 
-  const getHeaderBtn = ({navigation})=>{
+  const getHeaderBtn = (navigation)=>{
 
     const openFav = ()=>{
         navigation.navigate('Fav')
@@ -19,7 +19,7 @@ const Main = ()=> {
     return (
         <View style={styles.iconCss}>
                 <Pressable onPress={openFav}>
-                    <Icon name="plus-circle" size={20} color={COLORS.black} />
+                    <Icon name="plus-circle" size={25} color={COLORS.black} />
                 </Pressable>
          </View>
     )
@@ -31,11 +31,13 @@ const Main = ()=> {
   return (
     <Stack.Navigator screenOptions={{
         headerStyle:styles.headerCss,
+        headerTintColor:COLORS.gray_700,
+        contentStyle:{backgroundColor:COLORS.gray_700}
     }}>
-      <Stack.Screen options={{
+      <Stack.Screen options={({navigation})=>({
         headerTitle:"Your Favorite Places",
-        header:Header
-      }} name="Home" component={Home} />
+        headerRight:getHeaderBtn.bind(this,navigation)
+      })} name="Home" component={Home} />
        <Stack.Screen options={{
         headerTitle:"Add Favorite Places",
       }} name="Fav" component={AddFav} />
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     headerCss:{
-        flex:1,
+        // flex:1,
         backgroundColor:COLORS.primary_100
     }
 })
